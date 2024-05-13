@@ -50,72 +50,99 @@ The following transitions are available:
 - This script uses a Mealy Machine model for the charging station FSM.
 - Outputs are defined for each transition, providing descriptions of the transitions.
 
-## Example Output
+## Document Testing of the FSM [Part 3]
 
 ```
-ChargerFSM.py
 Transitions for Idle state are: ['plug_in_vehicle']
-Current state: Idle
 Select a transition (type 'exit' to quit): plug_in_vehicle
 User Plugs in Vehicle. Transitioning to Connected state.
 Transitioning to state: Connected
+
+
 Transitions for Connected state are: ['unplug_vehicle', 'ready_for_charging']
-Current state: Connected
+Select a transition (type 'exit' to quit): unplug_vehicle
+Vehicle is unplugged by user. Transitioning to Idle state.
+Transitioning to state: Idle
+
+
+Transitions for Idle state are: ['plug_in_vehicle']
+Select a transition (type 'exit' to quit): plug_in_vehicle
+User Plugs in Vehicle. Transitioning to Connected state.
+Transitioning to state: Connected
+
+
+Transitions for Connected state are: ['unplug_vehicle', 'ready_for_charging']
 Select a transition (type 'exit' to quit): ready_for_charging
 Vehicle is ready for charging. Transitioning to Charging state.
 Transitioning to state: Charging
+
+
 Transitions for Charging state are: ['charging_complete', 'pause_charging']
-Current state: Charging
 Select a transition (type 'exit' to quit): pause_charging
 User pauses charging through the EV charging station app. Transitioning to Paused state.
 Transitioning to state: Paused
+
+
 Transitions for Paused state are: ['charging_error', 'resume_charging']
-Current state: Paused
 Select a transition (type 'exit' to quit): resume_charging
 User resumes charging through the EV charging station app. Transitioning to Charging state.
 Transitioning to state: Charging
+
+
 Transitions for Charging state are: ['charging_complete', 'pause_charging']
-Current state: Charging
 Select a transition (type 'exit' to quit): pause_charging
 User pauses charging through the EV charging station app. Transitioning to Paused state.
 Transitioning to state: Paused
+
+
 Transitions for Paused state are: ['charging_error', 'resume_charging']
-Current state: Paused
 Select a transition (type 'exit' to quit): charging_error
 Error pops up when charging. Transitioning to Error state.
 Transitioning to state: Error
+
+
 Transitions for Error state are: ['address_error']
-Current state: Error
 Select a transition (type 'exit' to quit): address_error
 Enters maintenance mode to address error. Transitioning to Maintenance state.
 Transitioning to state: Maintenance
+
+
 Transitions for Maintenance state are: ['finish_maintenance']
-Current state: Maintenance
 Select a transition (type 'exit' to quit): finish_maintenance
 Finished maintenance. Transitioning to Idle state.
 Transitioning to state: Idle
+
+
 Transitions for Idle state are: ['plug_in_vehicle']
-Current state: Idle
 Select a transition (type 'exit' to quit): plug_in_vehicle
 User Plugs in Vehicle. Transitioning to Connected state.
 Transitioning to state: Connected
+
+
 Transitions for Connected state are: ['unplug_vehicle', 'ready_for_charging']
-Current state: Connected
 Select a transition (type 'exit' to quit): ready_for_charging
 Vehicle is ready for charging. Transitioning to Charging state.
 Transitioning to state: Charging
+
+
 Transitions for Charging state are: ['charging_complete', 'pause_charging']
-Current state: Charging
 Select a transition (type 'exit' to quit): charging_complete
 Vehicle's battery is charged to max state possible by the car. Transitioning to Finished state.
 Transitioning to state: Finished
+
+
 Transitions for Finished state are: ['unplug_vehicle_finished']
-Current state: Finished
+Select a transition (type 'exit' to quit): unplug_vehicle_finshed
+Invalid transition. Please try again.
+
+
+Transitions for Finished state are: ['unplug_vehicle_finished']
 Select a transition (type 'exit' to quit): unplug_vehicle_finished
 Vehicle is unplugged by the user. Transitioning to Idle state.
 Transitioning to state: Idle
+
+
 Transitions for Idle state are: ['plug_in_vehicle']
-Current state: Idle
 Select a transition (type 'exit' to quit): exit
 Finite machine graph saved as state_machine.png
 ```

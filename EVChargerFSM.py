@@ -123,9 +123,9 @@ def prompt_for_transition():
     # Get the transitions for the current state
     current_state = charging_station.model.state
     available_transitions = state_info[current_state]['transitions']
+    print ("\n")
     print("Transitions for " + current_state +  " state are:", available_transitions)
-
-    print("Current state:", current_state)
+    # print("Current state:", current_state)
     selected_transition = input("Select a transition (type 'exit' to quit): ")
     if selected_transition == 'exit':
         return False
